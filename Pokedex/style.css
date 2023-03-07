@@ -241,8 +241,8 @@ header {
   bottom: 50px;
   position: relative;
   object-fit: cover;
-  width: 200px;
-  left: 150px;
+  width: 150px;
+  left: 120px;
   z-index: 10;
 }
 
@@ -250,7 +250,7 @@ header {
   position: relative;
   bottom: 32px;
   width: 100%;
-  height: 40vh;
+  height: 50vh;
   border-radius: 32px;
   padding: 50px 24px;
   background-color: #ffffff;
@@ -262,7 +262,6 @@ header {
   align-items: center;
   color: #000000;
   font-size: 20px;
-  margin: 0 32px;
   cursor: pointer;
 }
 
@@ -279,22 +278,25 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 32px;
   position: absolute;
-  width: 70%;
+  width: 85%;
 }
 
 .dialog-species-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 5px;
   color: #000000;
 }
 
-.col-dialog-species-content > p:nth-child(1) {
+.dialog-species-content > p {
+  margin-bottom: 0;
+}
+
+.dialog-species-content > p:nth-child(1) {
   color: #7f8c8d;
+  width: 100px;
 }
 
 .index1 {
@@ -308,9 +310,8 @@ header {
 .dialog-move-content {
   display: flex;
   flex-wrap: wrap;
-  max-height: 200px;
+  max-height: 180px;
   overflow-y: auto;
-  margin-top: 10px;
   max-width: 100%;
 }
 
@@ -349,13 +350,17 @@ header {
   transform: scale(1.3);
 }
 
+.progress {
+  width: 50%;
+  height: 5px;
+  margin-left: 10px;
+}
+
+
 @media (max-width: 1024px) {
   main {
     display: flex;
     justify-content: center;
-  }
-  .rowPokemon {
-    flex-direction: column;
   }
   #pokemonImageDialog {
     left: 100px;
@@ -367,5 +372,41 @@ header {
 
   .dialog-click-button-right {
     right: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rowPokemonContent{
+    width: 90vw;
+    height: 95vh;
+    position: relative;
+    bottom: 30px;
+    margin-bottom: 10px;
+    background-size: 600px;
+    padding-top: 20px;
+  }
+  .rowPokemonContent:hover{
+    transform: none;
+  }
+  .rowPokemonContentHeader {
+    font-size: 48px;
+  }
+  .col-pokemon-number {
+    font-size: 48px;
+    top: 0;
+    left: 300px;
+  }
+  .row-pokemon-art > span {
+    width: 100px;
+    font-size: 24px;
+  }
+  #pokemonImage {
+    position: absolute;
+    width: 300px;
+    top: 250px;
+    right: 32px;
+  }
+  #pokemonImage:hover {
+    transform: none;
   }
 }
