@@ -184,7 +184,7 @@ header {
   right: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 10;
 }
 
 .col-dialog {
@@ -194,6 +194,7 @@ header {
   min-width: 30vw;
   height: 100vh;
   padding: 24px;
+  z-index: 20;
 }
 
 .d-none {
@@ -329,7 +330,7 @@ header {
 .dialog-click-button-right {
   font-size: 50px;
   position: absolute;
-  right: 420px;
+  right: 460px;
   top: 150px;
   cursor: pointer;
 }
@@ -337,7 +338,7 @@ header {
 .dialog-click-button-left {
   font-size: 50px;
   position: absolute;
-  left: 420px;
+  left: 460px;
   top: 150px;
   cursor: pointer;
 }
@@ -362,16 +363,33 @@ header {
     display: flex;
     justify-content: center;
   }
+  .col-dialog {
+    min-width: 40vw;
+  }
+  .dialog-click-button-right {
+    right: 280px;
+    top: 120px;
+  }
+  .dialog-click-button-left {
+    left: 280px;
+    top: 120px;
+  }
   #pokemonImageDialog {
     left: 100px;
   }
+}
 
-  .dialog-click-button-left {
-    left: 120px;
+@media (max-width: 876px) {
+  .col-dialog {
+    min-width: 50vw;
   }
-
   .dialog-click-button-right {
-    right: 120px;
+    right: 230px;
+    top: 120px;
+  }
+  .dialog-click-button-left {
+    left: 230px;
+    top: 120px;
   }
 }
 
