@@ -64,7 +64,7 @@ function dialogPokemonInfo(i) {
   dialogPokemonInfo.innerHTML = /*html*/ `
         <div class="col-dialog-pokemon-info ${getPokemonTypeClass(i)}" id="dialogPokemonContent${i}">
           <div class="col-close-card">
-            <span onclick="closeCard()" class="col-dialog-close"><i class="fa-solid fa-xmark"></i></span>
+            <span onclick="closeCard(${i})" class="col-dialog-close"><i class="fa-solid fa-xmark"></i></span>
             <span>#${i}</span>
           </div>
           <h1>${name}</h1>
@@ -113,42 +113,42 @@ function dialogPokemonInfo(i) {
               <p>HP</p>
               <p>${baseHP}</p>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #27ae60;"></div>
+                <div class="progress-bar" role="progressbar" style="width: ${baseHP}%; background-color: #27ae60;"></div>
               </div>
             </div>
             <div class="dialog-species-content">
               <p>Attack</p>
               <p>${baseAttack}</p>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #2980b9"></div>
+                <div class="progress-bar" role="progressbar" style="width: ${baseAttack}%; background-color: #2980b9"></div>
               </div>
             </div>
             <div class="dialog-species-content">
               <p>Defense</p>
               <p>${baseDefense}</p>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #b71540"></div>
+                <div class="progress-bar" role="progressbar" style="width: ${baseDefense}%; background-color: #b71540"></div>
               </div>
             </div>
             <div class="dialog-species-content">
               <p>Spe. Attack</p>
               <p>${baseSpeAttack}</p>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #8e44ad"></div>
+                <div class="progress-bar" role="progressbar" style="width: ${baseSpeAttack}%; background-color: #8e44ad"></div>
               </div>
             </div>
             <div class="dialog-species-content">
               <p>Spec. Defense</p>
               <p>${baseSpeDefense}</p>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #d35400"></div>
+                <div class="progress-bar" role="progressbar" style="width: ${baseSpeDefense}%; background-color: #d35400"></div>
               </div>
             </div>
             <div class="dialog-species-content">
               <p>Speed</p>
               <p>${baseSpeed}</p>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%; background-color: #cc8e35"></div>
+                <div class="progress-bar" role="progressbar" style="width: ${baseSpeed}%; background-color: #cc8e35"></div>
               </div>
             </div>
           </div>
@@ -217,7 +217,7 @@ function closeCard() {
   document.getElementById("row-dialog-bg").classList.add("d-none");
 }
 
-function popUpBackground() {
+/*function popUpBackground() {
   let popup = document.getElementById('row-dialog-bg');
   popup.classList.toggle('d-none');
-} 
+} */
