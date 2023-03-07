@@ -138,11 +138,11 @@ function dialogPokemonInfo(i) {
           </div>
           
           <div id="moves" class="dialog-all-species index2">
-            <div class="dialog-move-content" id="move${currentPokedex["moves"]}"></div>
+            <div class="dialog-move-content" id="move${allPokedex[i-1]["moves"]}"></div>
           </div>
         </div>
     `;
-  dialogMove();
+  dialogMove(i);
 }
 
 function nextPoke(i) {
@@ -163,10 +163,10 @@ function prevPoke(i) {
   dialogPokemonInfo(i);
 }
 
-function dialogMove() {
-  for (let j = 0; j < currentPokedex.moves.length; j++) {
-    document.getElementById(`move${currentPokedex["moves"]}`).innerHTML += `
-      <p class="dialog-move-p">${currentPokedex["moves"][j]["move"]["name"]}</p>
+function dialogMove(i) {
+  for (let j = 0; j < allPokedex[i-1].moves.length; j++) {
+    document.getElementById(`move${allPokedex[i-1]["moves"]}`).innerHTML += `
+      <p class="dialog-move-p">${allPokedex[i-1]["moves"][j]["move"]["name"]}</p>
     `;
   }
 }
