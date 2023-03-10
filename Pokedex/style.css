@@ -159,7 +159,7 @@ header {
 .row-pokemon-art > span {
   display: flex;
   flex-direction: column;
-  width: 48px;
+  width: 64px;
   background-color: #a9a8ad;
   font-size: 16px;
   padding: 6px;
@@ -191,7 +191,7 @@ header {
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-width: 30vw;
+  width: 30vw;
   height: 100vh;
   padding: 24px;
   z-index: 20;
@@ -212,7 +212,7 @@ header {
 
 .col-dialog-pokemon-info {
   width: 100%;
-  height: 40vh;
+  max-height: 40vh;
   background-repeat: no-repeat;
   background-size: 400px;
   background-position: center;
@@ -242,8 +242,9 @@ header {
   bottom: 50px;
   position: relative;
   object-fit: cover;
-  width: 150px;
-  left: 120px;
+  width: 170px;
+  height: 170px;
+  left: 100px;
   z-index: 10;
 }
 
@@ -251,7 +252,7 @@ header {
   position: relative;
   bottom: 32px;
   width: 100%;
-  height: 50vh;
+  min-height: 52vh;
   border-radius: 32px;
   padding: 50px 24px;
   background-color: #ffffff;
@@ -281,6 +282,7 @@ header {
   justify-content: space-between;
   position: absolute;
   width: 85%;
+  max-height: 180px;
 }
 
 .dialog-species-content {
@@ -298,6 +300,11 @@ header {
 .dialog-species-content > p:nth-child(1) {
   color: #7f8c8d;
   width: 100px;
+  margin-right: 8px;
+}
+
+.dialog-species-content > p:nth-child(2) {
+  width: 48px;
 }
 
 .index1 {
@@ -343,88 +350,69 @@ header {
   cursor: pointer;
 }
 
-.dialog-click-button-right:hover {
-  transform: scale(1.3);
-}
-
-.dialog-click-button-left:hover {
-  transform: scale(1.3);
-}
-
 .progress {
   width: 50%;
   height: 5px;
   margin-left: 10px;
 }
 
-
 @media (max-width: 1024px) {
-  main {
-    display: flex;
-    justify-content: center;
-  }
   .col-dialog {
+    position: relative;
+    right: 50px;
     min-width: 40vw;
   }
+  #pokemonImageDialog {
+    left: 90px;
+    bottom: 50px;
+    width: 180px;
+  }
   .dialog-click-button-right {
-    right: 280px;
-    top: 120px;
+    right: 30px;
+    top: 140px;
   }
   .dialog-click-button-left {
-    left: 280px;
-    top: 120px;
-  }
-  #pokemonImageDialog {
-    left: 100px;
+    left: 30px;
+    top: 140px;
   }
 }
-
 @media (max-width: 876px) {
   .col-dialog {
-    min-width: 50vw;
+    position: relative;
+    right: 50px;
+    min-width: 45vw;
   }
-  .dialog-click-button-right {
-    right: 230px;
-    top: 120px;
-  }
-  .dialog-click-button-left {
-    left: 230px;
-    top: 120px;
+  #pokemonImageDialog {
+    left: 60px;
   }
 }
-
-@media (max-width: 480px) {
-  .rowPokemonContent{
-    width: 90vw;
-    height: 95vh;
+@media (max-width: 672px) {
+  .col-dialog {
     position: relative;
-    bottom: 30px;
-    margin-bottom: 10px;
-    background-size: 600px;
-    padding-top: 20px;
+    right: 50px;
+    min-width: 60vw;
   }
-  .rowPokemonContent:hover{
-    transform: none;
+  #pokemonImageDialog {
+    left: 60px;
   }
-  .rowPokemonContentHeader {
-    font-size: 48px;
+}
+@media (max-width: 532px) {
+  .col-dialog {
+    position: relative;
+    right: 50px;
+    min-width: 72vw;
   }
-  .col-pokemon-number {
-    font-size: 48px;
-    top: 0;
-    left: 300px;
+  #pokemonImageDialog {
+    left: 60px;
   }
-  .row-pokemon-art > span {
-    width: 100px;
-    font-size: 24px;
+}
+@media (max-width: 432px) {
+  .col-dialog {
+    position: relative;
+    right: 50px;
+    min-width: 85vw;
   }
-  #pokemonImage {
-    position: absolute;
-    width: 300px;
-    top: 250px;
-    right: 32px;
-  }
-  #pokemonImage:hover {
-    transform: none;
+  #pokemonImageDialog {
+    left: 60px;
   }
 }

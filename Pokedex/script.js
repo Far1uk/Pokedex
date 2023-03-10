@@ -16,7 +16,13 @@ async function loadPokedex() {
 function renderPokemon(i) {
   let renderPokemon = document.getElementById("rowPokemon");
   let type = allPokedex[i - 1]["types"][0]["type"]["name"];
-  renderPokemon.innerHTML += /*html*/ `
+  renderPokemon.innerHTML += generatedRender(i);
+  renderPokemonTypes();
+  dialogPokemonInfo(i);
+}
+
+function generatedRender(i) {
+  return /*html*/ `
     <div onclick="openCard(${i})" class="rowPokemonContent ${getPokemonTypeClass(i)}" id="rowPokemonContent${i}">
       <div>
         <span class="col-pokemon-number" id="number">#${i}</span>
@@ -28,10 +34,7 @@ function renderPokemon(i) {
       <div>
         <img src="${allPokedex[i - 1].sprites.other["official-artwork"].front_default}" id="pokemonImage" />
       </div>
-    </div>
-  `;
-  renderPokemonTypes();
-  dialogPokemonInfo(i);
+    </div>`
 }
 
 function getPokemonTypeClass(i) {
@@ -45,6 +48,7 @@ function renderPokemonTypes() {
         `;
   }
 }
+  
 
 function dialogPokemonInfo(i) {
   let name = allPokedex[i - 1].name;
@@ -92,7 +96,7 @@ function dialogPokemonInfo(i) {
           <div id="about" class="dialog-all-species">
             <div class="dialog-species-content">
               <p>Species</p>
-              <p></p>
+              <p>${name}</p>
             </div>
             <div class="dialog-species-content">
               <p>Height</p>
