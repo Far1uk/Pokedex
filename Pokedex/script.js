@@ -5,11 +5,24 @@ let allPokedex = [];
 
 async function loadPokedex() {
   for (let i = 1; i < load; i++) {
-    let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
-    let response = await fetch(url);
-    currentPokedex = await response.json();
-    allPokedex.push(currentPokedex);
-    renderPokemon(i);
+    let url = await resolve(fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`));
+    if (url) {
+      currentPokedex = await url.json();
+      allPokedex.push(currentPokedex);
+      renderPokemon(i);
+    } else {
+      console.warn('Fehler aufgetreten!');
+    }
+  }
+}
+
+async function resolve(p) {
+  try {
+    let response = await p;
+    return response
+  } catch(e) {
+    console.warn(e);
+    return null;
   }
 }
 
@@ -34,7 +47,8 @@ function generatedRender(i) {
       <div>
         <img src="${allPokedex[i - 1].sprites.other["official-artwork"].front_default}" id="pokemonImage" />
       </div>
-    </div>`
+    </div>
+    `
 }
 
 function getPokemonTypeClass(i) {
@@ -56,8 +70,7 @@ function dialogPokemonInfo(i) {
   let ability = allPokedex[i - 1].abilities[0].ability.name;
   let weight = allPokedex[i - 1].weight;
   let height = allPokedex[i - 1].height;
-  let picture =
-    allPokedex[i - 1].sprites.other["official-artwork"].front_default;
+  let picture = allPokedex[i - 1].sprites.other["official-artwork"].front_default;
   let baseHP = allPokedex[i - 1].stats[0].base_stat;
   let baseAttack = allPokedex[i - 1].stats[1].base_stat;
   let baseDefense = allPokedex[i - 1].stats[2].base_stat;
@@ -166,17 +179,17 @@ function dialogPokemonInfo(i) {
 }
 
 function nextPoke(i) {
-  if (i == allPokedex.length - 1) {
-    i = 0
-  } else {
+  if (i - 1 < allPokedex.length - 1) {
     i++;
+  } else {
+    i = 1;
   }
   dialogPokemonInfo(i);
 }
 
 function prevPoke(i) {
-  if (i == 0) {
-    i = allPokedex.length - 1
+  if (i == 1) {
+    i = allPokedex.length;
   } else {
     i--;
   }
@@ -188,6 +201,20 @@ function dialogMove(i) {
     document.getElementById(`move${allPokedex[i-1]["moves"]}`).innerHTML += `
       <p class="dialog-move-p">${allPokedex[i-1]["moves"][j]["move"]["name"]}</p>
     `;
+  }
+}
+
+function filterName() {
+  let search = document.getElementById('search').value;
+  search = search.toLowerCase();
+  let content = document.getElementById('rowPokemon');
+  content.innerHTML = '';
+
+  for(let i = 0; i < allPokedex.length; i++) {
+    let currentPokedex = allPokedex[i];
+    if (currentPokedex["name"].toLowerCase().includes(search)) {
+      content.innerHTML += generatedRender(i + 1); // +1, beim Downloaden nicht auf 0 sondern 1 gesetzt
+    }
   }
 }
 
@@ -221,7 +248,10 @@ function closeCard() {
   document.getElementById("row-dialog-bg").classList.add("d-none");
 }
 
-/*function popUpBackground() {
-  let popup = document.getElementById('row-dialog-bg');
-  popup.classList.toggle('d-none');
-} */
+function closePopup() {
+  document.getElementById('row-dialog-bg').classList.add('d-none')
+}
+
+function doNotClose(event) {
+  event.stopPropagation();
+}

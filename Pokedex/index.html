@@ -32,14 +32,14 @@
         <img src="./img/logo.png" />
       </div>
       <div class="row-header-input">
-        <input type="text" />
+        <input type="text" / id="search" onkeydown="filterName()">
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
     </header>
     <main>
       <div id="rowPokemon" class="rowPokemon"></div>
-      <div id="row-dialog-bg" class="row-dialog-bg d-none">
-        <div id="col-dialog" class="col-dialog"></div>
+      <div id="row-dialog-bg" class="row-dialog-bg d-none" onclick="closePopup()">
+        <div id="col-dialog" class="col-dialog" onclick="doNotClose(event)"></div>
       </div>
     </main>
   </body>
